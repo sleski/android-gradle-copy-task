@@ -14,10 +14,11 @@ task copyTxt(type: Sync) {
 
 task('updateTxt') {
     inputs.dir('lib2')
-    def files =  fileTree("lib2").filter { it.isFile() }.files.name
+    doFirst {
+      def files =  fileTree("lib2").filter { it.isFile() }.files.name
 
-     files.eachWithIndex { String entry, int i ->
-        println i + '-' +entry
+       files.eachWithIndex { String entry, int i ->
+          println i + '-' +entry
+      }
     }
-
 }
